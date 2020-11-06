@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "minVersion": "0.7.10",
+  "package": "com.mrbysco.fac.mixin",
+  "refmap": "foreverachild.refmap.json",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "AgeableEntityMixin"
+  ]
+}
