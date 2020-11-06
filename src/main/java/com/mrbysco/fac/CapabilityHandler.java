@@ -49,11 +49,13 @@ public class CapabilityHandler {
     }
 
     public void shrinkItem(ItemStack stack, PlayerEntity playerIn) {
-        if(stack.getItem() == Items.MILK_BUCKET) {
-            stack.shrink(1);
-            playerIn.addItemStackToInventory(new ItemStack(Items.BUCKET));
-        } else {
-            stack.shrink(1);
+        if(!playerIn.abilities.isCreativeMode) {
+            if(stack.getItem() == Items.MILK_BUCKET) {
+                stack.shrink(1);
+                playerIn.addItemStackToInventory(new ItemStack(Items.BUCKET));
+            } else {
+                stack.shrink(1);
+            }
         }
     }
 }

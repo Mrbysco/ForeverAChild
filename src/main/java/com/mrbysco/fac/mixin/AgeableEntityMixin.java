@@ -14,11 +14,13 @@ public class AgeableEntityMixin {
     @Inject(at = @At("HEAD"), method = "setGrowingAge(I)V", cancellable = true)
     public void setGrowingAge(int age, CallbackInfo info) {
         AgeableEntity entity = (AgeableEntity) (Object) this;
-        LazyOptional<ILocked> lockedCap = entity.getCapability(LockedCapabilityProvider.LOCKED_CAPABILITY, null);
-        lockedCap.ifPresent(c -> {
-            if(c.isLocked()) {
-                info.cancel();
-            }
-        });
+        if(entity.isChild()) {
+            LazyOptional<ILocked> lockedCap = entity.getCapability(LockedCapabilityProvider.LOCKED_CAPABILITY, null);
+            lockedCap.ifPresent(c -> {
+                if(c.isLocked()) {
+                    info.cancel();
+                }
+            });
+        }
     }
 }
