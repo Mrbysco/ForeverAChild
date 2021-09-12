@@ -20,7 +20,7 @@ public class LockedCapability implements ILocked, ICapabilitySerializable<Compou
 
     @Override
     public boolean isLocked() {
-        return locked;
+        return this.locked;
     }
 
     @Override
