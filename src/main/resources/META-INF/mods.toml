@@ -1,14 +1,26 @@
 modLoader="javafml"
-loaderVersion="[34,)"
-#issueTrackerURL="https://github.com/Mrbysco/"
+loaderVersion="[37,)"
+issueTrackerURL="https://github.com/Mrbysco/ForeverAChild/issues"
 license="MIT"
 
 [[mods]]
 modId="foreverachild"
 version="${file.jarVersion}"
 displayName="Forever A Child"
-#displayURL="https://www.curseforge.com/minecraft/mc-mods/"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/forever-a-child"
 authors="Mrbysco"
 description='''
 Allows you to stop baby animals from ageing further
 '''
+[[dependencies.foreverachild]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.17.1,1.18)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.foreverachild]]
+modId="forge"
+mandatory=true
+versionRange="[37.0.59,38)"
+ordering="NONE"
+side="BOTH"
