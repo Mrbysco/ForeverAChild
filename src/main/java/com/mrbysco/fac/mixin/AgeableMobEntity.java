@@ -9,15 +9,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AgeableMob.class)
 public class AgeableMobEntity {
-    @Inject(at = @At("HEAD"), method = "setAge(I)V", cancellable = true)
-    public void setGrowingAge(int age, CallbackInfo info) {
-        AgeableMob entity = (AgeableMob) (Object) this;
-        if(entity.isBaby()) {
-            entity.getCapability(CapabilityHandler.LOCKED_CAPABILITY).ifPresent(c -> {
-                if(c.isLocked()) {
-                    info.cancel();
-                }
-            });
-        }
-    }
+	@Inject(at = @At("HEAD"), method = "setAge(I)V", cancellable = true)
+	public void setGrowingAge(int age, CallbackInfo info) {
+		AgeableMob entity = (AgeableMob) (Object) this;
+		if (entity.isBaby()) {
+			entity.getCapability(CapabilityHandler.LOCKED_CAPABILITY).ifPresent(c -> {
+				if (c.isLocked()) {
+					info.cancel();
+				}
+			});
+		}
+	}
 }

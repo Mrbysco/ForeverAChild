@@ -1,7 +1,7 @@
 package com.mrbysco.fac.capability;
 
 public interface ILocked {
-    boolean isLocked();
+	boolean isLocked();
 
-    void setLocked(boolean locked);
+	void setLocked(boolean locked);
 }
