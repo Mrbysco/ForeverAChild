@@ -28,7 +28,7 @@ public class CapabilityHandler {
 	@SubscribeEvent
 	public void interactEvent(EntityInteract event) {
 		if (event.getTarget() instanceof AgeableMob ageableMob && !ageableMob.level.isClientSide) {
-			Player playerIn = event.getPlayer();
+			final Player playerIn = event.getEntity();
 			if (ageableMob.isBaby()) {
 				ItemStack stack = event.getItemStack();
 				if (stack.is(ForeverAChild.AGE_LOCKING_TAG)) {
