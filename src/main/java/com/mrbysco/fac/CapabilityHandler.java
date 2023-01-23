@@ -2,6 +2,7 @@ package com.mrbysco.fac;
 
 import com.mrbysco.fac.capability.ILocked;
 import com.mrbysco.fac.capability.LockedCapability;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -33,9 +34,13 @@ public class CapabilityHandler {
 				ItemStack stack = event.getItemStack();
 				if (stack.is(ForeverAChild.AGE_LOCKING_TAG)) {
 					setLocked(ageableMob, playerIn, stack, true);
+					event.setCancellationResult(InteractionResult.SUCCESS);
+					event.setCanceled(true);
 				}
 				if (stack.is(ForeverAChild.AGE_UNLOCKING_TAG)) {
 					setLocked(ageableMob, playerIn, stack, false);
+					event.setCancellationResult(InteractionResult.SUCCESS);
+					event.setCanceled(true);
 				}
 			}
 		}
