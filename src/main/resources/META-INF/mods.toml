@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[43,)"
+loaderVersion="[45,)"
 issueTrackerURL="https://github.com/Mrbysco/ForeverAChild/issues"
 license="MIT"
 
@@ -15,12 +15,6 @@ Allows you to stop baby animals from ageing further
 [[dependencies.foreverachild]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.19,1.20)"
-ordering="NONE"
-side="BOTH"
-[[dependencies.foreverachild]]
-modId="forge"
-mandatory=true
-versionRange="[43.1.1,)"
+versionRange="[1.19.4,1.20)"
 ordering="NONE"
 side="BOTH"
