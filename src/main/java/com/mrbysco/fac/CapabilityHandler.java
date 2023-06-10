@@ -28,7 +28,7 @@ public class CapabilityHandler {
 
 	@SubscribeEvent
 	public void interactEvent(EntityInteract event) {
-		if (event.getTarget() instanceof AgeableMob ageableMob && !ageableMob.level.isClientSide) {
+		if (event.getTarget() instanceof AgeableMob ageableMob && !ageableMob.level().isClientSide) {
 			final Player playerIn = event.getEntity();
 			if (ageableMob.isBaby()) {
 				ItemStack stack = event.getItemStack();
