@@ -4,8 +4,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.NeoForge;
 
 @Mod(ForeverAChild.MOD_ID)
 public class ForeverAChild {
@@ -15,6 +15,6 @@ public class ForeverAChild {
 	public static final TagKey<Item> AGE_UNLOCKING_TAG = ItemTags.create(new ResourceLocation(MOD_ID, "age_unlocking"));
 
 	public ForeverAChild() {
-		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
+		NeoForge.EVENT_BUS.register(new CapabilityHandler());
 	}
 }

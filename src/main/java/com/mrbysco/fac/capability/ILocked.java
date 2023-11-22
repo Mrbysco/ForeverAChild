@@ -1,6 +1,6 @@
 package com.mrbysco.fac.capability;
 
-import net.minecraftforge.common.capabilities.AutoRegisterCapability;
+import net.neoforged.neoforge.common.capabilities.AutoRegisterCapability;
 
 @AutoRegisterCapability
 public interface ILocked {

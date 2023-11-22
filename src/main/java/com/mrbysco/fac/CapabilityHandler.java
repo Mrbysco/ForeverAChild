@@ -8,19 +8,19 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.common.capabilities.CapabilityToken;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.capabilities.Capability;
+import net.neoforged.neoforge.common.capabilities.CapabilityManager;
+import net.neoforged.neoforge.common.capabilities.CapabilityToken;
+import net.neoforged.neoforge.event.AttachCapabilitiesEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 
 public class CapabilityHandler {
 	public static final Capability<ILocked> LOCKED_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
 	});
 
 	@SubscribeEvent
-	public void onEntityConstructing(AttachCapabilitiesEvent<Entity> event) {
+	public void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
 		if (event.getObject() instanceof AgeableMob) {
 			event.addCapability(ForeverAChild.AGELOCKED_CAP, new LockedCapability());
 		}
@@ -32,13 +32,10 @@ public class CapabilityHandler {
 			final Player playerIn = event.getEntity();
 			if (ageableMob.isBaby()) {
 				ItemStack stack = event.getItemStack();
-				if (stack.is(ForeverAChild.AGE_LOCKING_TAG)) {
-					setLocked(ageableMob, playerIn, stack, true);
+				if (stack.is(ForeverAChild.AGE_LOCKING_TAG) && setLocked(ageableMob, playerIn, stack, true)) {
 					event.setCancellationResult(InteractionResult.SUCCESS);
 					event.setCanceled(true);
-				}
-				if (stack.is(ForeverAChild.AGE_UNLOCKING_TAG)) {
-					setLocked(ageableMob, playerIn, stack, false);
+				} else if (stack.is(ForeverAChild.AGE_UNLOCKING_TAG) && setLocked(ageableMob, playerIn, stack, false)) {
 					event.setCancellationResult(InteractionResult.SUCCESS);
 					event.setCanceled(true);
 				}
@@ -46,13 +43,16 @@ public class CapabilityHandler {
 		}
 	}
 
-	public void setLocked(AgeableMob entity, Player playerIn, ItemStack stack, boolean value) {
-		entity.getCapability(CapabilityHandler.LOCKED_CAPABILITY).ifPresent(c -> {
-			if (c.isLocked() != value) {
-				c.setLocked(value);
+	public boolean setLocked(AgeableMob entity, Player playerIn, ItemStack stack, boolean value) {
+		ILocked lockCap = entity.getCapability(CapabilityHandler.LOCKED_CAPABILITY).orElse(null);
+		if (lockCap != null) {
+			if (lockCap.isLocked() != value) {
+				lockCap.setLocked(value);
 				shrinkItem(stack, playerIn);
+				return true;
 			}
-		});
+		}
+		return false;
 	}
 
 	public void shrinkItem(ItemStack stack, Player playerIn) {
