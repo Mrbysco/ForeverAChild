@@ -1,30 +1,14 @@
 package com.mrbysco.fac;
 
-import com.mrbysco.fac.capability.ILocked;
-import com.mrbysco.fac.capability.LockedCapability;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.common.capabilities.Capability;
-import net.neoforged.neoforge.common.capabilities.CapabilityManager;
-import net.neoforged.neoforge.common.capabilities.CapabilityToken;
-import net.neoforged.neoforge.event.AttachCapabilitiesEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 
 public class CapabilityHandler {
-	public static final Capability<ILocked> LOCKED_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
-	});
-
-	@SubscribeEvent
-	public void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
-		if (event.getObject() instanceof AgeableMob) {
-			event.addCapability(ForeverAChild.AGELOCKED_CAP, new LockedCapability());
-		}
-	}
 
 	@SubscribeEvent
 	public void interactEvent(EntityInteract event) {
@@ -44,13 +28,11 @@ public class CapabilityHandler {
 	}
 
 	public boolean setLocked(AgeableMob entity, Player playerIn, ItemStack stack, boolean value) {
-		ILocked lockCap = entity.getCapability(CapabilityHandler.LOCKED_CAPABILITY).orElse(null);
-		if (lockCap != null) {
-			if (lockCap.isLocked() != value) {
-				lockCap.setLocked(value);
-				shrinkItem(stack, playerIn);
-				return true;
-			}
+		boolean locked = entity.getData(ForeverAChild.LOCKED);
+		if(locked != value) {
+			entity.setData(ForeverAChild.LOCKED, value);
+			shrinkItem(stack, playerIn);
+			return true;
 		}
 		return false;
 	}
