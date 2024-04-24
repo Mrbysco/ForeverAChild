@@ -27,6 +27,6 @@ public class ForeverAChild {
 	public ForeverAChild(IEventBus eventBus) {
 		ATTACHMENT_TYPES.register(eventBus);
 
-		NeoForge.EVENT_BUS.register(new CapabilityHandler());
+		NeoForge.EVENT_BUS.register(new AttachmentHandler());
 	}
 }

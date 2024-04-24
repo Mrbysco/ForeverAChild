@@ -8,7 +8,7 @@ import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 
-public class CapabilityHandler {
+public class AttachmentHandler {
 
 	@SubscribeEvent
 	public void interactEvent(EntityInteract event) {
