@@ -17,8 +17,8 @@ import java.util.function.Supplier;
 @Mod(ForeverAChild.MOD_ID)
 public class ForeverAChild {
 	public static final String MOD_ID = "foreverachild";
-	public static final TagKey<Item> AGE_LOCKING_TAG = ItemTags.create(new ResourceLocation(MOD_ID, "age_locking"));
-	public static final TagKey<Item> AGE_UNLOCKING_TAG = ItemTags.create(new ResourceLocation(MOD_ID, "age_unlocking"));
+	public static final TagKey<Item> AGE_LOCKING_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(MOD_ID, "age_locking"));
+	public static final TagKey<Item> AGE_UNLOCKING_TAG = ItemTags.create(ResourceLocation.fromNamespaceAndPath(MOD_ID, "age_unlocking"));
 
 	private static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, MOD_ID);
 	public static final Supplier<AttachmentType<Boolean>> LOCKED = ATTACHMENT_TYPES.register(
