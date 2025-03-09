@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "foreverachild",
+  "version": "${version}",
+  "name": "Forever A Child",
+  "description": "Allows you to stop baby animals from ageing further",
+  "authors": [
+    "Mrbysco"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/forever-a-child",
+    "sources": "https://github.com/Mrbysco/ForeverAChild",
+    "issues": "https://github.com/Mrbysco/ForeverAChild/issues"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.mrbysco.fac.ForeverAChildFabric"
+    ]
+  },
+  "mixins": [
+    "foreverachild.fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15",
+    "fabric": "*",
+    "minecraft": "~1.20",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
+  
