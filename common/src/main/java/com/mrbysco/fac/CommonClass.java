@@ -33,6 +33,6 @@ public class CommonClass {
     }
 
     private static TagKey<Item> createItemTag(String path) {
-        return TagKey.create(Registries.ITEM, new ResourceLocation(Constants.MOD_ID, path));
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path));
     }
 }
