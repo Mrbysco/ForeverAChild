@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AgeableMob.class)
 public class AgeableMobMixin {
 	@Inject(at = @At("HEAD"), method = "setAge(I)V", cancellable = true)
-	public void setGrowingAge(int age, CallbackInfo info) {
+	public void foreverachild$setAge(int age, CallbackInfo info) {
 		AgeableMob entity = (AgeableMob) (Object) this;
 		if (CommonClass.isLocked(entity)) {
 			info.cancel();
