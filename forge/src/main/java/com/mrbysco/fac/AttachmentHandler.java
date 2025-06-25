@@ -4,7 +4,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 
@@ -31,20 +30,9 @@ public class AttachmentHandler {
 		boolean locked = entity.getData(ForeverAChildNeoForge.LOCKED);
 		if (locked != value) {
 			entity.setData(ForeverAChildNeoForge.LOCKED, value);
-			shrinkItem(stack, playerIn);
+			CommonClass.shrinkItem(stack, playerIn);
 			return true;
 		}
 		return false;
-	}
-
-	public void shrinkItem(ItemStack stack, Player playerIn) {
-		if (!playerIn.getAbilities().instabuild) {
-			if (stack.getItem() == Items.MILK_BUCKET) {
-				stack.shrink(1);
-				playerIn.addItem(new ItemStack(Items.BUCKET));
-			} else {
-				stack.shrink(1);
-			}
-		}
 	}
 }

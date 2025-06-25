@@ -7,11 +7,11 @@ import net.minecraft.world.entity.AgeableMob;
 public class FabricPlatformHelper implements IPlatformHelper {
 
 
-    @Override
-    public boolean isLocked(AgeableMob ageableMob) {
-        if (ageableMob.isBaby()) {
-	        return ageableMob.getAttachedOrElse(ForeverAChildFabric.LOCKED, false);
-        }
-        return false;
-    }
+	@Override
+	public boolean isLocked(AgeableMob ageableMob) {
+		if (ageableMob.isBaby()) {
+			return ageableMob.getAttachedOrElse(ForeverAChildFabric.LOCKED, false);
+		}
+		return false;
+	}
 }
