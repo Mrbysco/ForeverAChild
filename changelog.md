@@ -1,1 +1,1 @@
-* Fix crash on startup (Fabric)
+* Generate build for 1.21.8
