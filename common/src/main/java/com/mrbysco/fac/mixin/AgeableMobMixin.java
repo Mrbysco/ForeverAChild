@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@SuppressWarnings("UnusedMixin") // It is used in the Fabric and NeoForge platform implementations
 @Mixin(AgeableMob.class)
 public class AgeableMobMixin {
 	@Inject(at = @At("HEAD"), method = "setAge(I)V", cancellable = true)
