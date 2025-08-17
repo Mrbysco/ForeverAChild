@@ -1,1 +1,1 @@
-* Initial build for 1.21.7
+* Fix crash on startup (Fabric)
