@@ -1,1 +1,1 @@
-* Initial multiloader build for 1.21.5
+* Fix crash on startup (Fabric)
