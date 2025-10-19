@@ -1,1 +1,1 @@
-* Fix crash on startup (Fabric)
+* Update to 1.21.10
