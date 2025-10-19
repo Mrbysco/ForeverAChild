@@ -17,7 +17,7 @@ public class MultiPlayerGameModeMixin {
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/ClientPacketListener;send(Lnet/minecraft/network/protocol/Packet;)V",
 					shift = At.Shift.AFTER),
 			cancellable = true)
-	private void entityInteract(Player player, Entity entity, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
+	private void foreverachild$interact(Player player, Entity entity, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir) {
 		var result = ForeverAChildFabric.interactEvent(player, entity, player.getItemInHand(interactionHand));
 		if (result.consumesAction()) {
 			cir.setReturnValue(result);

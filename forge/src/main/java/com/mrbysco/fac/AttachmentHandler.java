@@ -5,13 +5,15 @@ import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 
+@EventBusSubscriber
 public class AttachmentHandler {
 
 	@SubscribeEvent
-	public void interactEvent(EntityInteract event) {
-		if (event.getTarget() instanceof AgeableMob ageableMob && !ageableMob.level().isClientSide) {
+	public static void interactEvent(EntityInteract event) {
+		if (event.getTarget() instanceof AgeableMob ageableMob && !ageableMob.level().isClientSide()) {
 			final Player playerIn = event.getEntity();
 			if (ageableMob.isBaby()) {
 				ItemStack stack = event.getItemStack();
@@ -26,7 +28,7 @@ public class AttachmentHandler {
 		}
 	}
 
-	public boolean setLocked(AgeableMob entity, Player playerIn, ItemStack stack, boolean value) {
+	public static boolean setLocked(AgeableMob entity, Player playerIn, ItemStack stack, boolean value) {
 		boolean locked = entity.getData(ForeverAChildNeoForge.LOCKED);
 		if (locked != value) {
 			entity.setData(ForeverAChildNeoForge.LOCKED, value);

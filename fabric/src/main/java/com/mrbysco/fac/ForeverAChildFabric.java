@@ -22,7 +22,7 @@ public class ForeverAChildFabric implements ModInitializer {
 	}
 
 	public static InteractionResult interactEvent(Player player, Entity target, ItemStack stack) {
-		if (target instanceof AgeableMob ageableMob && !ageableMob.level().isClientSide) {
+		if (target instanceof AgeableMob ageableMob && !ageableMob.level().isClientSide()) {
 			if (ageableMob.isBaby()) {
 				if (stack.is(CommonClass.AGE_LOCKING_TAG)) {
 					setLocked(ageableMob, player, stack, true);
