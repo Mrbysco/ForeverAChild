@@ -2,7 +2,7 @@ package com.mrbysco.fac;
 
 import com.mrbysco.fac.platform.Services;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.player.Player;
@@ -33,6 +33,6 @@ public class CommonClass {
 	}
 
 	private static TagKey<Item> createItemTag(String path) {
-		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path));
+		return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Constants.MOD_ID, path));
 	}
 }
